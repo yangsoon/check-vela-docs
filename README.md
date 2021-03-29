@@ -18,21 +18,17 @@ name: docs
 on:
   push:
     paths:
-      - 'doc/**'
+      - 'docs/**'
 jobs:
-  gh-push:
+  docs-push:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: webfactory/ssh-agent@v0.5.0
         with:
           ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
-      - name: Push to GitHub Repo
-        uses: sunny0826/auto-docs-action
-        env:
-          USE_SSH: true
-          GIT_USER: git
-          DEPLOYMENT_BRANCH: gh-pages
+      - name: Check Vela Docs
+        uses: yangsoon/check-vela-docs
         with:
-          gh-page: git@github.com:sunny0826/pod-lens.github.io.git
+          gh-page: git@github.com:oam-dev/kubevela.io.git
 ```
