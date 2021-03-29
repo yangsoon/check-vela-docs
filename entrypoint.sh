@@ -30,6 +30,8 @@ cp -R $2/zh-CN/* git-page/i18n/zh/docusaurus-plugin-content-docs/
 echo "check docs"
 cd git-page
 
+echo "install node package"
+yarn add nodejieba
 if [ -e yarn.lock ]; then
 yarn install --frozen-lockfile
 elif [ -e package-lock.json ]; then
@@ -37,4 +39,6 @@ npm ci
 else
 npm i
 fi
-npm run build
+
+echo "run build"
+yarn build
