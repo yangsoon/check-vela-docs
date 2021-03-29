@@ -1,0 +1,20 @@
+name: 'Check Vela Docs Actions'
+branding:
+  icon: "cloud-lightning"
+  color: "blue"
+description: 'Automatically check the correctness of the doc.'
+author: 'yangsoonlx'
+inputs: 
+  gh-page:
+    description: 'github page repo'
+    required: true
+  docs-path:
+    description: 'path of docs dir'
+    required: true
+    default: 'docs'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.gh-page }}
+    - ${{ inputs.docs-path }}
