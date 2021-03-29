@@ -41,4 +41,4 @@ npm i
 fi
 
 echo "run build"
-yarn build
+npm run build
